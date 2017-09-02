@@ -1,0 +1,11 @@
+@media only screen and (max-width : 480px) {
+	.parag-wrap {
+		flex-direction: column;
+	}
+	.prev-number {
+		margin-bottom: 10px;
+	}
+	.user-number {
+		margin-bottom: 5px;
+	}
+}
