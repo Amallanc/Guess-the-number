@@ -1,30 +1,26 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
 	var cont = $('.container'),
-			userNum,
-			loseWindow = $('.lose-window'),
-			winWindow = $('.win-window'),
-			wrongNum = $('.user-number'),
-			prevNum = $('.prev-number'),
-			less = $('.less'),
-			more = $('.more'),
-			btn = $('input[type="submit"]'),
-			numField = $('.field'),
-			resBtn = $('.reset-btn'),
-			counter = 1;
+		userNum,
+		loseWindow = $('.lose-window'),
+		winWindow = $('.win-window'),
+		wrongNum = $('.user-number'),
+		prevNum = $('.prev-number'),
+		less = $('.less'),
+		more = $('.more'),
+		btn = $('input[type="submit"]'),
+		numField = $('.field'),
+		resBtn = $('.reset-btn'),
+		counter = 1;
 
+	var randomNum = Math.floor(Math.random() * 100);
 
-	var randomNum = Math.floor(Math.random()*100);
-	console.log('Program number: ' + randomNum);
-
-
-
-	btn.click(function(event){
+	btn.click(function (event) {
 
 		event.preventDefault();
 
 		userNum = Number(numField.val());
-		if(userNum === randomNum) {
+		if (userNum === randomNum) {
 			winWindow.addClass('active');
 
 		}
@@ -32,7 +28,7 @@ $(document).ready(function(){
 			loseWindow.addClass('active');
 
 		} else {
-			if(userNum < randomNum) {
+			if (userNum < randomNum) {
 				more.css('display', 'block');
 				less.css('display', 'none');
 			} else {
@@ -41,39 +37,30 @@ $(document).ready(function(){
 			}
 		}
 
-		numField.val('') //Clear form field after click
-
+		numField.val('') // Clear form field after click
 
 		prevNum.text('Previous numbers: ');
 		var text = wrongNum.text();
 		wrongNum.text(text += userNum + ' ');
-
 
 		counter++;
 		numField.focus()
 
 	});
 
+	resBtn.click(function () {
 
-		resBtn.click(function(){
-
-			winWindow.removeClass('active');
-			loseWindow.removeClass('active');
-			randomNum = Math.floor(Math.random()*100);
-			wrongNum.text('');
-			less.css('display', 'none');
-			more.css('display', 'none');
-			counter = 1;
-
-			numField.focus()
-
-
-			console.log('Program number: ' + randomNum);
-		});
+		winWindow.removeClass('active');
+		loseWindow.removeClass('active');
+		randomNum = Math.floor(Math.random() * 100);
+		wrongNum.text('');
+		less.css('display', 'none');
+		more.css('display', 'none');
+		counter = 1;
+		numField.focus()
+	});
 
 
-numField.focus()
-
-
+	numField.focus()
 
 });
